@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+   <variable
+    name="viewmodel"
+    type="com.example.cheers.viewModel.DashBoardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Theme.Material3.DayNight.NoActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:id="@+id/toolbarDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:title="@string/app_name"
+            app:titleCentered="true"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:weightSum="10"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
+            app:showView="@{!viewmodel.isEmptyOrErro().component2()}">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_weight="7">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    app:showView="@{viewmodel.isLoading_one()}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="3"
+                            android:background="@color/gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent=".3"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/roud_img_loader"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="34sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@color/gray"
+                            android:fontFamily="sans-serif-black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone"
+                    android:weightSum="3"
+                    app:showView="@{!viewmodel.isLoading_one()}">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3"
+                        android:src="@drawable/undraw_beer_xg5f"
+                        app:error="@{@drawable/baseline_broken_image_24}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImg="@{viewmodel.getRandomBeer().image_url}"
+                        app:placeHolder="@{@drawable/roud_img_loader}"
+                        tools:src="@drawable/baseline_broken_image_24" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@{viewmodel.getRandomBeer().name}"
+                        android:textColor="@color/purple_200"
+                        android:textSize="22sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                        tools:text="@string/app_name" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@{viewmodel.getRandomBeer().tagline}"
+                        android:textColor="@color/purple_700"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginTop="32dp"
+                android:paddingEnd="16dp"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:showView="@{!viewmodel.isLoading()}"
+                tools:itemCount="10"
+                tools:layout_editor_absoluteX="0dp"
+                tools:listitem="@layout/beer_horizontal_item" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_marginTop="32dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:showView="@{viewmodel.isLoading()}"
+                tools:itemCount="10">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:clipToPadding="false"
+                    android:foreground="@drawable/roud_img_loader"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp"
+                    android:paddingEnd="24dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                    tools:itemCount="10"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:listitem="@layout/beer_horizontal_item" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:showView="@{viewmodel.isEmptyOrErro().component2()}"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetail">
+
+            <ImageView
+                android:id="@+id/ivEmpty"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/undraw_void__3_ggu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.454"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.498" />
+
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="Something went wrong "
+                android:textColor="@color/design_default_color_error"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/ivEmpty"
+                app:layout_constraintStart_toStartOf="@+id/ivEmpty"
+                app:layout_constraintTop_toBottomOf="@+id/ivEmpty" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

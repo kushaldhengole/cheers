@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Cheers</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">List</string>
+    <string name="title_dashboard">Dashboard</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tagline">TagLine</string>
+    <string name="this_app_give_information_about_beer">Get Beer information</string>
+    <string name="match">Match</string>
+    <string name="food_paring_with_beer">Food Pairing %s </string>
+    <string name="food">Enter food</string>
+    <string name="bred_on">FirstBrewed: %s</string>
+</resources>

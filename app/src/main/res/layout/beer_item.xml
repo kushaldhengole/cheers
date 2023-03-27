@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="beer"
+        type="com.example.cheers.model.dataModel.BeerDataModel"/>
+</data>
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp"
+    app:strokeWidth="2dp"
+    android:layout_marginHorizontal="8dp"
+   android:layout_marginTop="8dp"
+   >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:id="@+id/mcv_beer"
+       >
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivItem"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:loadImg="@{beer.image_url}"
+            app:placeHolder="@{@drawable/roud_img_loader}"
+            app:error="@{@drawable/baseline_broken_image_24}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvItemName"
+            app:layout_constraintWidth_percent=".2" />
+
+        <TextView
+            android:id="@+id/tvItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:singleLine="true"
+            android:text="@{beer.name}"
+            tools:text="name"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ivItem"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{beer.tagline}"
+            tools:text="name"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+</layout>

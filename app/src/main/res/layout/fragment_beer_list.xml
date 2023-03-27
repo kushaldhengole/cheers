@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+<variable
+    name="viewmodel"
+    type="com.example.cheers.viewModel.BeerListViewModel" />
+</data>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.BeerListFragment">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/toolbarDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:title="Beer's List"
+        app:titleCentered="true"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
+        app:showView="@{viewmodel.isEmptyOrErro().component2()}">
+
+
+        <ImageView
+            android:id="@+id/ivEmpty"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/undraw_void__3_ggu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.498" />
+
+        <TextView
+            android:id="@+id/tvEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:text="@{viewmodel.isEmptyOrErro().component1()}"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/ivEmpty"
+            app:layout_constraintStart_toStartOf="@+id/ivEmpty"
+            app:layout_constraintTop_toBottomOf="@+id/ivEmpty"
+            tools:text="error" />
+    </LinearLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
+        app:showView="@{viewmodel.isLoading()}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+
+            <include layout="@layout/beer_item_shimer" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBeer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
+        app:showView="@{!viewmodel.isLoading()&amp;&amp;!viewmodel.isEmptyOrErro().component2()}"
+        tools:itemCount="90"
+        tools:listitem="@layout/beer_item" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

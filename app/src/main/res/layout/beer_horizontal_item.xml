@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="beer"
+            type="com.example.cheers.model.dataModel.FoodPairedBeerDataModel"/>
+        <variable
+            name="pairedFood"
+            type="String" />
+    </data>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        android:id="@+id/materialCardView"
+        app:strokeWidth="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginVertical="8dp"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:id="@+id/mcv_beer"
+            >
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivItem"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvItemName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".35"
+                app:loadImg="@{beer.image_url}"
+                app:error="@{@drawable/baseline_broken_image_24}"
+                app:placeHolder="@{@drawable/roud_img_loader}"
+                tools:src="@drawable/ic_home_black_24dp" />
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{beer.name}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ivItem"
+                app:layout_constraintTop_toTopOf="@+id/ivItem"
+                tools:text="name" />
+
+            <TextView
+                android:id="@+id/tvbrew"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:singleLine="true"
+                android:text="@{@string/bred_on(beer.first_brewed)}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivItem"
+                app:layout_constraintTop_toBottomOf="@+id/tvItemName"
+                />
+
+            <TextView
+                android:id="@+id/tvbrewsdc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:visibility="gone"
+                android:text="@{beer.description}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivItem"
+                app:layout_constraintTop_toBottomOf="@+id/tvbrew"
+                tools:text="Frist Brewed:20009" />
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivItem"
+                app:layout_constraintTop_toBottomOf="@+id/tvbrewsdc">
+
+                <TextView
+                    android:id="@+id/textdsc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/food_paring_with_beer(pairedFood)}"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="@string/food_paring_with_beer"/>
+            </ScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
