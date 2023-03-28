@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.cheers.R
 import com.example.cheers.databinding.FragmentDashboardBinding
+import com.example.cheers.util.Extendtion.safeNavigate
 import com.example.cheers.view.adapters.FoodPairedBeerAdpater
 import com.example.cheers.viewModel.DashBoardViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +24,9 @@ class DashboardFragment : Fragment() {
     val viewModel:DashBoardViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val backEvent = requireActivity().onBackPressedDispatcher.addCallback(this){
+
+        }
 
     }
     override fun onCreateView(
@@ -55,11 +59,11 @@ class DashboardFragment : Fragment() {
 
 
     private fun setRecyclerView() {
-        foodPairedBeerAdpater = FoodPairedBeerAdpater({beerid->
-            val bundle = Bundle()
-            bundle.putString("id" , beerid.toString())
-            findNavController().navigate(R.id.action_navigation_dashboard_to_navigation_detail,bundle)
-        })
+        foodPairedBeerAdpater = FoodPairedBeerAdpater { beerid ->
+            val action = DashboardFragmentDirections.actionNavigationDashboardToNavigationDetail()
+             action.id = beerid.toString()
+            findNavController().safeNavigate(action)
+        }
         binding.recyclerView.apply {
             adapter = foodPairedBeerAdpater
             hasFixedSize()

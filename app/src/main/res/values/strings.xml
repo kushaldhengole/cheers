@@ -8,7 +8,7 @@
     <string name="tagline">TagLine</string>
     <string name="this_app_give_information_about_beer">Get Beer information</string>
     <string name="match">Match</string>
-    <string name="food_paring_with_beer">Food Pairing %s </string>
+    <string name="food_paring_with_beer">Food Pairing: %s </string>
     <string name="food">Enter food</string>
     <string name="bred_on">FirstBrewed: %s</string>
 </resources>

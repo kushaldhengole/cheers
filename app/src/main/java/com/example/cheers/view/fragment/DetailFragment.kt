@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -44,7 +45,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val supportActionBar: ActionBar? = (requireActivity() as AppCompatActivity).supportActionBar
-        supportActionBar?.hide()
+         supportActionBar?.hide()
          viewModel.selectedBeerid = arguments?.getString("id")?.toLong()
         viewModel.getSelectedBeer()
         binding?.toolbarDetail?.setOnClickListener {

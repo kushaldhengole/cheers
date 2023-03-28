@@ -32,14 +32,21 @@ class MainActivity : AppCompatActivity(){
     override fun onResume() {
         super.onResume()
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            binding.navView.isVisible =
-                !(destination.id == R.id.navigation_detail)
+            binding.navView.isVisible = !(destination.id == R.id.navigation_detail)
         }
 
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        navController.popBackStack()
+        navController.currentDestination?.let {
+            navDestination ->
+            if (navDestination.id==R.id.navigation_dashboard){
+                finish()
+            }
+            else{
+                super.onBackPressed()
+            }
+        }
+
     }
 }

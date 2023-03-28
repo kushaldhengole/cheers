@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.cheers.R
 import com.example.cheers.databinding.FragmentBeerListBinding
 import com.example.cheers.model.commonModels.RepositoryResult
+import com.example.cheers.util.Extendtion.safeNavigate
 import com.example.cheers.view.adapters.BeerListAdapter
 import com.example.cheers.viewModel.BeerListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,7 @@ class BeerListFragment : Fragment() {
 
     private var beerAdapter: BeerListAdapter?=null
     private var _binding: FragmentBeerListBinding? = null
-    val viewModel:BeerListViewModel by hiltNavGraphViewModels(R.id.mobile_navigation)
+    val viewModel:BeerListViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -69,10 +69,9 @@ class BeerListFragment : Fragment() {
 
     private fun setRecyclerView() {
          beerAdapter= BeerListAdapter { beerid ->
-             val bundle = Bundle()
-             bundle.putString("id" , beerid.toString())
-
-             findNavController().navigate(R.id.action_navigation_list_to_navigation_detail,bundle)
+             val action = BeerListFragmentDirections.actionNavigationListToNavigationDetail ()
+             action.id = beerid.toString()
+             findNavController().safeNavigate(action)
          }
         binding.rvBeer.apply {
             adapter= beerAdapter

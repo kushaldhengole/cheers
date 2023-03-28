@@ -5,7 +5,6 @@ import com.example.cheers.model.commonModels.RepositoryResult
 import com.example.cheers.model.dataModel.BeerDataModel
 import com.example.cheers.model.dataModel.BeerDetailModel
 import com.example.cheers.model.dataModel.FoodPairedBeerDataModel
-import com.example.cheers.model.response.BeersResponseModel
 import kotlinx.coroutines.flow.Flow
 
 interface CheersRespoInterface {

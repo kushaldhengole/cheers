@@ -18,7 +18,7 @@ fun BeerList.toViewModel():BeerDataModel{
         id,name,tagline,description,image_url?:"")
 
 }
- fun  BeerDataModel.toEntity():BeerList{
+ fun  BeerDataModel.toEntity(): BeerList {
     return BeerList(
         id,name,tagline,description,image_url
     )
