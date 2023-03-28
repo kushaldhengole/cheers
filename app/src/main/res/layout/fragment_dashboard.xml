@@ -164,30 +164,20 @@
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:visibility="visible"
                 android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView"
                 app:showView="@{viewmodel.isLoading()}"
                 tools:itemCount="10">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/gray"
-                    android:clipToPadding="false"
-                    android:foreground="@drawable/roud_img_loader"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="8dp"
-                    android:paddingEnd="24dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-                    tools:itemCount="10"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:listitem="@layout/beer_horizontal_item" />
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:background="@drawable/roud_img_loader"/>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
         </LinearLayout>

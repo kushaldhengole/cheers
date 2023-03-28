@@ -37,7 +37,7 @@ class DashBoardViewModel @Inject constructor (
     var _page:Int=2
     val page:Int get() = _page
 
-    var _per_page:Int=20
+    var _per_page:Int=4
     val per_page:Int get() = _per_page
 
     var _food:String?="Chicken"

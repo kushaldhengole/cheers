@@ -11,7 +11,9 @@ import com.example.cheers.model.dataModel.FoodPairedBeerDataModel
 import com.example.cheers.util.toViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import retrofit2.Call
 import retrofit2.Response
+import retrofit2.awaitResponse
 import javax.inject.Inject
 
 class CheersRespository @Inject constructor(
