@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cheers.data.respository.CheersRespoInterface
-import com.example.cheers.data.respository.Source
+import com.example.cheers.respository.CheersRespoInterface
+import com.example.cheers.respository.Source
 import com.example.cheers.model.commonModels.RepositoryResult
 import com.example.cheers.model.dataModel.BeerDataModel
 import com.example.cheers.util.toEntity

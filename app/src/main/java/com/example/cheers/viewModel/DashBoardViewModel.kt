@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cheers.data.nerwork.CheersApiService
-import com.example.cheers.data.respository.CheersRespoInterface
-import com.example.cheers.data.respository.Source
+import com.example.cheers.respository.CheersRespoInterface
+import com.example.cheers.respository.Source
 import com.example.cheers.model.commonModels.RepositoryResult
 import com.example.cheers.model.dataModel.BeerDataModel
 import com.example.cheers.model.dataModel.FoodPairedBeerDataModel
@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DashBoardViewModel @Inject constructor (
-    val cheersRespoInterface: CheersRespoInterface)  :ViewModel() {
+    val cheersRespoInterface: CheersRespoInterface
+)  :ViewModel() {
 
     val _fooPaireddBeerList: MutableLiveData<List<FoodPairedBeerDataModel>> by lazy { MutableLiveData() }
     val foodPairedBeerList: LiveData<List<FoodPairedBeerDataModel>> get() = _fooPaireddBeerList
