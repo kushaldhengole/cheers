@@ -2,7 +2,6 @@ package com.example.cheers.di
 
 import com.example.cheers.data.localdatabase.CheersDatabase
 import com.example.cheers.data.localdatabase.dao.BeerListDao
-import com.example.cheers.data.localdatabase.dao.FoodPairDao
 import com.example.cheers.data.nerwork.CheersApiService
 import com.example.cheers.data.respository.CheersRespoInterface
 import com.example.cheers.data.respository.CheersRespository
@@ -22,11 +21,7 @@ class cheersDIProviderModule {
     }
 
     @Provides
-    fun provideCheersListDao(cheersDatabase: CheersDatabase):BeerListDao= cheersDatabase.beeListDao()
-
-    @Provides
-    fun provideFoodpairDao(cheersDatabase: CheersDatabase):FoodPairDao = cheersDatabase.foodPairDao()
-
+    fun provideCheersListDao(cheersDatabase: CheersDatabase): BeerListDao = cheersDatabase.beeListDao()
 
     @Provides
     fun provideCheersRespository(
