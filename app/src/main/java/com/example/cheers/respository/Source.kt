@@ -1,4 +1,4 @@
-package com.example.cheers.data.respository
+package com.example.cheers.respository
 
 enum class Source {
     REMOTE,LOCAL

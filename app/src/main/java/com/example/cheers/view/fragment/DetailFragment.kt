@@ -4,32 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.cheers.R
 import com.example.cheers.databinding.FragmentDetailBinding
-import com.example.cheers.util.hideBottomSheet
 import com.example.cheers.viewModel.BeerDetailViewModel
-import com.example.cheers.viewModel.BeerListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
     var binding:FragmentDetailBinding?=null
-    var hideBottomSheet:hideBottomSheet?=null
     val viewModel:BeerDetailViewModel by viewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,11 +48,9 @@ class DetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        hideBottomSheet?.showBottomSheet(false)
     }
 
     override fun onStop() {
         super.onStop()
-        hideBottomSheet?.showBottomSheet(true)
     }
 }

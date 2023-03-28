@@ -1,4 +1,4 @@
-package com.example.cheers.data.respository
+package com.example.cheers.respository
 
 import com.example.cheers.data.localdatabase.entity.BeerList
 import com.example.cheers.model.commonModels.RepositoryResult
