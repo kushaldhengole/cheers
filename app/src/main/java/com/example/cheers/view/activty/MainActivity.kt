@@ -9,7 +9,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.cheers.R
 import com.example.cheers.databinding.ActivityMainBinding
-import com.example.cheers.util.hideBottomSheet
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
