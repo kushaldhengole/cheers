@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Cheers"
 include ':app'
+include ':core'
+include ':dashboard'
+include ':mylibrary'
+include ':foodPair'
